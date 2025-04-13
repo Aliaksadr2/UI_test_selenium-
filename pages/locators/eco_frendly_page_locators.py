@@ -15,20 +15,11 @@ PRODUCT_IMAGES = (By.XPATH, '//img[@class="product-image-photo"]')
 
 TRAINING_CATEGORY = (By.ID, 'ui-id-7')
 TRAINING_OPTION = (By.ID, 'ui-id-28')
+TRAINING_VIDEO_MESSAGE = (By.XPATH, '//div[text()="We can\'t find products matching the selection."]')
 
 NO_PRODUCTS_MESSAGE = (
     By.XPATH,
     '//div[text()="We can\'t find products matching the selection."]'
 )
-#На  сайте не  работает нормально сортировка поэтому пришлось использовать 2  варианта
 
-EXPECTED_FIRST_IMAGE_SRC = [
-    (
-        "https://magento.softwaretestingboard.com/pub/media/catalog/product/cache/"
-        "7c4c1ed835fbbf2269f24539582c6d44/w/s/wsh10-black_main_1.jpg"
-    ),
-    (
-        "https://magento.softwaretestingboard.com/pub/media/catalog/product/cache/"
-        "7c4c1ed835fbbf2269f24539582c6d44/m/t/mt11-blue_main_1.jpg"
-    )
-]
+
