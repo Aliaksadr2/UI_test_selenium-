@@ -1,4 +1,5 @@
 from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
 import pytest
 from pages.user_login import UserLogin
 from pages.sale_page import SalePage
@@ -7,7 +8,9 @@ from pages.eco_frendly_page import CategoryPage
 
 @pytest.fixture(scope="function")
 def driver():
-    chrom_driver = webdriver.Chrome()
+    options = Options()
+    options.add_argument('--headless')
+    chrom_driver = webdriver.Chrome(options=options)
     chrom_driver.maximize_window()
     chrom_driver.set_page_load_timeout(220)
     yield chrom_driver
