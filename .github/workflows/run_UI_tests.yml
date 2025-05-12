@@ -1,23 +1,32 @@
 name: Python autotests
 
 on: 
-  push:              # Срабатывает при пушах в репозиторий
-    branches:
-      - main         # Укажите ветку, для которой запускается workflow
+  workflow_dispatch:             
+    inputs:
+      deployment_target:            
+        description: Choose tests set  
+        required: true
+        type: choice
+        default: smoke
+        options: 
+          - smoke
+          - regression
+          - extended
+          - all      
     
 jobs:
   run-tests:
-    runs-on: ubuntu-latest  # Было указано "ubuntu-latets", исправлено на "ubuntu-latest"
+    runs-on: ubuntu-latest  
     name: Run autotests
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3  # Используйте существующую версию (v4 не существует)
+        uses: actions/checkout@v3  
 
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.10'  # На момент знания OpenAI Python 3.13.1 не существует
+          python-version: '3.10'  
 
       - name: Install dependencies
         run: |
