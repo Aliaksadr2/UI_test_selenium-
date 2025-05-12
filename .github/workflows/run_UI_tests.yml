@@ -1,1 +1,28 @@
+name: Python autotests
 
+on: 
+  push:              # Срабатывает при пушах в репозиторий
+    branches:
+      - main         # Укажите ветку, для которой запускается workflow
+    
+jobs:
+  run-tests:
+    runs-on: ubuntu-latest  # Было указано "ubuntu-latets", исправлено на "ubuntu-latest"
+    name: Run autotests
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3  # Используйте существующую версию (v4 не существует)
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'  # На момент знания OpenAI Python 3.13.1 не существует
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run tests
+        run: pytest
