@@ -51,6 +51,12 @@ jobs:
           sudo ln -sf /opt/allure/bin/allure /usr/local/bin/allure
           rm -rf allure.tgz
 
+      - name: Check Java version
+        run: java -version
+
+      - name: Check Allure version
+        run: allure --version
+
       - name: Run all tests
         if: ${{ github.event.inputs.deployment_target == 'all' }}
         run: pytest --alluredir=allure-results
@@ -68,4 +74,4 @@ jobs:
         run: pytest -m extended --alluredir=allure-results
 
       - name: Generate Allure Report
-        run: allure generate -c allure-results -o allure-report
+        run: allure generate allure-results -o allure-report
