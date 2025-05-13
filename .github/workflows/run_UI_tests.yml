@@ -36,15 +36,19 @@ jobs:
       - name: Install Java
         uses: actions/setup-java@v3
         with: 
-          distribution: 'microsoft'
-          java-version: '17'
+          distribution: microsoft
+          java-version: 17
 
-      - name: Download and Install Allure Commandline
+      - name: Install Allure
         run: |
-          curl -o allure.tgz -L "https://github.com/allure-framework/allure2/releases/download/2.21.0/allure-2.21.0.tgz"
+          sudo wget -O allure.tgz https://github.com/allure-framework/allure2/releases/download/2.21.0/allure-2.21.0.tgz
+          if [ ! -f allure.tgz ]; then
+            echo "Failed to download Allure"
+            exit 1
+          fi
           tar -xzf allure.tgz
-          sudo mv allure-2.21.0 /usr/local/bin/allure
-          rm -rf allure.tgz
+          sudo mv allure-2.21.0/bin/allure /usr/local/bin/allure
+          rm -rf allure.tgz allure-2.21.0
 
       - name: Run all tests
         if: ${{ github.event.inputs.deployment_target == 'all' }}
@@ -64,5 +68,3 @@ jobs:
 
       - name: Generate Allure Report
         run: allure generate -c allure-results -o allure-report
-
-     
