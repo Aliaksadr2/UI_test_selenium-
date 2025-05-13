@@ -1,6 +1,6 @@
 name: Python autotests
 
-on: 
+on:
   workflow_dispatch:             
     inputs:
       deployment_target:            
@@ -13,7 +13,7 @@ on:
           - regression
           - extended
           - all      
-    
+
 jobs:
   run-tests:
     runs-on: ubuntu-latest  
@@ -65,8 +65,8 @@ jobs:
       - name: Generate Allure Report
         run: allure generate -c allure-results -o allure-report
 
-      - name: Save Allure Report 
-        uses: actions/upload-artifact@v3.1.2
+      - name: Save Allure Report
+        uses: actions/upload-artifact@v3
         with:
           name: allure-report
           path: allure-report
