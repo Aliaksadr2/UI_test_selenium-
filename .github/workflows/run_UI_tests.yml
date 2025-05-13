@@ -65,9 +65,4 @@ jobs:
       - name: Generate Allure Report
         run: allure generate -c allure-results -o allure-report
 
-      - name: Save Allure Report
-        uses: actions/upload-artifact@v2
-        with:
-          name: allure-report
-          path: allure-report
-          retention-days: 1
+     
