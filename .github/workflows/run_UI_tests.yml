@@ -47,8 +47,9 @@ jobs:
             exit 1
           fi
           tar -xzf allure.tgz
-          sudo mv allure-2.24.1/bin/allure /usr/local/bin/allure
-          rm -rf allure.tgz allure-2.21.0
+          sudo mv allure-2.24.1 /opt/allure
+          sudo ln -sf /opt/allure/bin/allure /usr/local/bin/allure
+          rm -rf allure.tgz
 
       - name: Run all tests
         if: ${{ github.event.inputs.deployment_target == 'all' }}
