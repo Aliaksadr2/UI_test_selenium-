@@ -47,7 +47,7 @@ jobs:
             exit 1
           fi
           tar -xzf allure.tgz
-          sudo mv allure-2.21.0/bin/allure /usr/local/bin/allure
+          sudo mv allure-2.24.1/bin/allure /usr/local/bin/allure
           rm -rf allure.tgz allure-2.21.0
 
       - name: Run all tests
