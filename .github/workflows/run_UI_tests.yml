@@ -41,7 +41,7 @@ jobs:
 
       - name: Install Allure
         run: |
-          sudo wget -O allure.tgz https://github.com/allure-framework/allure2/releases/download/2.21.0/allure-2.21.0.tgz
+          sudo wget -O allure.tgz https://github.com/allure-framework/allure2/releases/download/2.24.1/allure-2.24.1.tgz
           if [ ! -f allure.tgz ]; then
             echo "Failed to download Allure"
             exit 1
